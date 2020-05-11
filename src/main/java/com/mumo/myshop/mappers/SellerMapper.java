@@ -1,24 +1,27 @@
 package com.mumo.myshop.mappers;
 
 import com.mumo.myshop.dto.SellerDto;
-import com.mumo.myshop.dto.UserDto;
 import com.mumo.myshop.models.Seller;
 import com.mumo.myshop.models.User;
-import lombok.AllArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
 @Component
 public class SellerMapper {
 
 
-    private final ModelMapper modelMapper;
-
     public Seller convertToEntity(SellerDto sellerDto) {
 
-        Seller seller =  modelMapper.map(sellerDto, Seller.class);
+        Seller seller =  new Seller();
+        seller.setId(sellerDto.id());
+        seller.setApproved(sellerDto.approved());
+        seller.setCompanyName(sellerDto.companyName());
+        
+        User user = new User();
+        user.setEmail(sellerDto.email());
+        user.setFirstName(sellerDto.firstName());
+        user.setLastName(sellerDto.lastName());
+        seller.setUser(user);
 
         return  seller;
     }
@@ -26,7 +29,13 @@ public class SellerMapper {
 
     public   SellerDto convertToDto(Seller seller) {
 
-        SellerDto sellerDto =  modelMapper.map(seller, SellerDto.class);
+        SellerDto sellerDto =  new SellerDto()
+        .id(seller.getId())
+        .approved(seller.getApproved())
+        .companyName(seller.getCompanyName())
+        .email(seller.getUser().getEmail())
+        .firstName(seller.getUser().getFirstName())
+        .lastName(seller.getUser().getLastName());
         return  sellerDto;
     }
 }

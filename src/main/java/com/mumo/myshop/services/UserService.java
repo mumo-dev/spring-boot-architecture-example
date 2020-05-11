@@ -2,16 +2,14 @@ package com.mumo.myshop.services;
 
 import com.mumo.myshop.dto.UserDto;
 import com.mumo.myshop.exceptions.ResourceNotFoundException;
+import com.mumo.myshop.mappers.UserMapper;
 import com.mumo.myshop.models.User;
 import com.mumo.myshop.repository.UserRepository;
-
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import lombok.AllArgsConstructor;
 
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -19,7 +17,8 @@ import java.util.stream.Collectors;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final ModelMapper modelMapper;
+    private final UserMapper userMapper;
+
 
     public UserDto createUser(UserDto userDto) {
         User user = convertToEntity(userDto);
@@ -27,7 +26,7 @@ public class UserService {
     }
 
     public UserDto updateUser(UserDto userDto) {
-       User userExists =  userRepository.findById(userDto.getId())
+       User userExists =  userRepository.findById(userDto.id())
                 .orElseThrow(() -> new ResourceNotFoundException("User with id " + userDto + " Not Found"));
 
         User user = convertToEntity(userDto);
@@ -48,11 +47,11 @@ public class UserService {
     }
 
     private UserDto convertToDto(User user) {
-        return modelMapper.map(user, UserDto.class);
+        return userMapper.convertToDto(user);
     }
 
     private User convertToEntity(UserDto userDto) {
-        return modelMapper.map(userDto, User.class);
+        return userMapper.convertToEntity(userDto);
     }
 
 }

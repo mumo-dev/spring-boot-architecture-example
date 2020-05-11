@@ -4,9 +4,9 @@ package com.mumo.myshop.services;
 import com.mumo.myshop.dto.ProductDto;
 import com.mumo.myshop.mappers.ProductMapper;
 import com.mumo.myshop.models.Product;
-import com.mumo.myshop.repository.CategoryRepository;
+
 import com.mumo.myshop.repository.ProductRepository;
-import com.mumo.myshop.repository.SellerRepository;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

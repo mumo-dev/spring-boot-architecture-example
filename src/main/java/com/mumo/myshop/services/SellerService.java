@@ -6,7 +6,6 @@ import com.mumo.myshop.mappers.SellerMapper;
 import com.mumo.myshop.models.Seller;
 import com.mumo.myshop.repository.SellerRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
