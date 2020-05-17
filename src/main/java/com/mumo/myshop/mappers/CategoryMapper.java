@@ -13,15 +13,16 @@ public class CategoryMapper implements AbstractMapper<Category, CategoryDto> {
   public Category convertToEntity(CategoryDto categoryDto) {
     // return modelMapper.map(categoryDto, Category.class);
     Category category = new Category();
-    category.setId(categoryDto.id());
-    category.setName(categoryDto.name());
+    category.setId(categoryDto.getId());
+    category.setName(categoryDto.getName());
     return category;
   }
 
   @Override
   public CategoryDto convertToDto(Category category) {
     // return modelMapper.map(category, CategoryDto.class);
-    CategoryDto categoryDto = new CategoryDto().id(category.getId()).name(category.getName());
+    CategoryDto categoryDto = new CategoryDto().setId
+    (category.getId()).setName(category.getName());
     return categoryDto;
   }
 }

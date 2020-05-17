@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 
 import java.util.List;
 
-@Accessors(chain = true, fluent = true )
+@Accessors(chain = true)
 @Setter
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)

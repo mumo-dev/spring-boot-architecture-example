@@ -26,7 +26,7 @@ public class UserService {
     }
 
     public UserDto updateUser(UserDto userDto) {
-       User userExists =  userRepository.findById(userDto.id())
+       User userExists =  userRepository.findById(userDto.getId())
                 .orElseThrow(() -> new ResourceNotFoundException("User with id " + userDto + " Not Found"));
 
         User user = convertToEntity(userDto);

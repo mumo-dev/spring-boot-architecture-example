@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
-@Accessors(chain = true, fluent = true )
+@Accessors(chain = true)
 @Setter
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)

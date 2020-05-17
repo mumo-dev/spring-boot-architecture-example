@@ -20,14 +20,14 @@ public class ProductMapper implements AbstractMapper<Product, ProductDto> {
 
     @Override
     public Product convertToEntity(ProductDto productDto) {
-        Category category = categoryRepository.getOne(productDto.categoryId());
-        Seller seller = sellerRepository.getOne(productDto.sellerId());
+        Category category = categoryRepository.getOne(productDto.getCategoryId());
+        Seller seller = sellerRepository.getOne(productDto.getSellerId());
         Product product = new Product();
         product.setCategory(category);
         product.setSeller(seller);
-        product.setId(productDto.id());
-        product.setDescription(productDto.description());
-        product.setName(productDto.name());
+        product.setId(productDto.getId());
+        product.setDescription(productDto.getDescription());
+        product.setName(productDto.getName());
         return product;
     }
 
@@ -35,9 +35,9 @@ public class ProductMapper implements AbstractMapper<Product, ProductDto> {
     public ProductDto convertToDto(Product product) {
       
         ProductDto productDto = new ProductDto()
-        .id(product.getId())
-        .name(product.getName())
-        .description(product.getDescription());
+        .setId(product.getId())
+        .setName(product.getName())
+        .setDescription(product.getDescription());
         
         return productDto;
     }

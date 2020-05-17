@@ -10,20 +10,20 @@ public class UserMapper {
     public User convertToEntity(UserDto userDto) {
 
         User user = new User();
-        user.setId(userDto.id());
-        user.setEmail(userDto.email());
-        user.setFirstName(userDto.firstName());
-        user.setLastName(userDto.lastName());
+        user.setId(userDto.getId());
+        user.setEmail(userDto.getEmail());
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
         return user;
     }
 
     public UserDto convertToDto(User user) {
 
        UserDto userDto = new UserDto()
-       .id(user.getId())
-       .email(user.getEmail())
-       .firstName(user.getFirstName())
-       .lastName(user.getLastName());
+       .setId(user.getId())
+       .setEmail(user.getEmail())
+       .setFirstName(user.getFirstName())
+       .setLastName(user.getLastName());
        return userDto;
     }
 

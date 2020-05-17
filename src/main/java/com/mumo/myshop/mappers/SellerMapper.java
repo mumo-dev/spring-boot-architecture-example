@@ -13,14 +13,14 @@ public class SellerMapper {
     public Seller convertToEntity(SellerDto sellerDto) {
 
         Seller seller =  new Seller();
-        seller.setId(sellerDto.id());
-        seller.setApproved(sellerDto.approved());
-        seller.setCompanyName(sellerDto.companyName());
+        seller.setId(sellerDto.getId());
+        seller.setApproved(sellerDto.getApproved());
+        seller.setCompanyName(sellerDto.getCompanyName());
         
         User user = new User();
-        user.setEmail(sellerDto.email());
-        user.setFirstName(sellerDto.firstName());
-        user.setLastName(sellerDto.lastName());
+        user.setEmail(sellerDto.getEmail());
+        user.setFirstName(sellerDto.getFirstName());
+        user.setLastName(sellerDto.getLastName());
         seller.setUser(user);
 
         return  seller;
@@ -30,12 +30,12 @@ public class SellerMapper {
     public   SellerDto convertToDto(Seller seller) {
 
         SellerDto sellerDto =  new SellerDto()
-        .id(seller.getId())
-        .approved(seller.getApproved())
-        .companyName(seller.getCompanyName())
-        .email(seller.getUser().getEmail())
-        .firstName(seller.getUser().getFirstName())
-        .lastName(seller.getUser().getLastName());
+        .setId(seller.getId())
+        .setApproved(seller.getApproved())
+        .setCompanyName(seller.getCompanyName())
+        .setEmail(seller.getUser().getEmail())
+        .setFirstName(seller.getUser().getFirstName())
+        .setLastName(seller.getUser().getLastName());
         return  sellerDto;
     }
 }

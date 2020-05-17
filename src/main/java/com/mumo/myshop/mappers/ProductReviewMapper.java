@@ -18,9 +18,9 @@ public class ProductReviewMapper implements AbstractMapper<ProductReview, Produc
     @Override
     public ProductReview convertToEntity(ProductReviewDto productReviewDto) {
         ProductReview productReview = new ProductReview();
-        productReview.setId(productReviewDto.id());
-        productReview.setReview(productReviewDto.review());
-        Product product = productRepository.getOne(productReviewDto.productId());
+        productReview.setId(productReviewDto.getId());
+        productReview.setReview(productReviewDto.getReview());
+        Product product = productRepository.getOne(productReviewDto.getProductId());
         productReview.setProduct(product);
         return productReview;
     }
@@ -29,8 +29,8 @@ public class ProductReviewMapper implements AbstractMapper<ProductReview, Produc
     public ProductReviewDto convertToDto(ProductReview productReview) {
        
         ProductReviewDto productReviewDto = new ProductReviewDto()
-            .id(productReview.getId())
-            .review(productReview.getReview());
+            .setId(productReview.getId())
+            .setReview(productReview.getReview());
             
         return productReviewDto;
     }
